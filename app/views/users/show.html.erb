@@ -1,4 +1,7 @@
-<h1>Welcome #user</h1>
-
-profile pic
-your pins
+<h1 class="center">Welcome <%= @user.username %></h1>
+<div class="form">
+	<p>Username: <%= @user.username %></p>
+	<p>Email: <%= @user.email %></p>
+	<p><%= link_to "Delete your account & it's associated pins", user_path(@user), method: :delete, data: {confirm: "Are you sure you want to delete your account and all associated pins created by this account?"} %></p>
+	<p><%= link_to 'Back to users list', users_path %></p>
+</div>

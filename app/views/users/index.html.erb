@@ -1,7 +1,22 @@
-<%= @users.each do |user| %>
-	<ul>
-		<li>name</li>
-		<li>profile pic</li>
-		<li>pin count</li>
-	</ul>
-<% end %>
+<div class="pins">
+	<% @users.each_slice(3) do |row| %>
+		<% row.each do |user| %>
+			<div class="pin-container col-xs-4">
+				<div class="pin-image col-md-4">
+					<%= image_tag('ruby-logo-thumbnail.png') %>
+				</div>
+				<div class="pin-info col-md-8">
+					<ul>
+						<li><%= user.username %></li>
+						<li><%= user.email %></li>
+					</ul>
+					<% if logged_in? && current_user == user %>
+						<%= link_to 'View', user_path(user) %>
+						<%= link_to 'Edit', edit_user_path(user) %>
+						<%= link_to 'Delete', user_path(user), method: :delete, data: {confirm: "Are you sure you want to delete your account and all associated pins created by this account?"} %>
+					<% end %>
+				</div>
+			</div>
+		<% end %>
+	<% end %>
+</div>

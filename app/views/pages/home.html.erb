@@ -1,4 +1,12 @@
-<h1>Pinterest Style App Homepage</h1>
-
-<%= link_to 'sign up', signup_path %>
-<%= link_to 'about', about_path %>
+<div class="jumbotron center">
+  <h2>Welcome to my</h2>
+  <h1>Pinterest-Style App</h1>
+  <div>
+  	<% if logged_in? %>
+  		<%= link_to 'About', about_path, class: "btn btn-primary btn-lg home-buttons" %>
+  	<% else %>
+	  	<%= link_to 'Sign Up', signup_path, class: "btn btn-primary btn-lg home-buttons" %>
+	  	<%= link_to 'About', about_path, class: "btn btn-primary btn-lg home-buttons" %>
+	<% end %> 	
+  </div>
+</div>

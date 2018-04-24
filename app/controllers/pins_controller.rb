@@ -1,4 +1,8 @@
 class PinsController < ApplicationController
+	before_action :set_pin, only: [:edit, :update, :show, :destroy]
+	before_action :require_user, except: [:index, :show]
+	before_action :require_same_user, only: [:edit, :update, :destroy]
+
 	def index
 		@pins = Pin.all
 	end
@@ -9,21 +13,19 @@ class PinsController < ApplicationController
 
 	def create
 		@pin = Pin.new(pin_params)
-		@pin.user = User.first
+		@pin.user = current_user
 		if @pin.save
 			flash[:success] = "You created a new pin!"
-			redirect_to pins_path
+			redirect_to pin_path(@pin)
 		else
 			render 'new'
 		end
 	end
 
 	def edit
-		@pin = Pin.find(params[:id])
 	end
 
 	def update
-		@pin = Pin.find(params[:id])
 		if @pin.update(pin_params)
 			flash[:success] = "Your pin was successfully updated"
 			redirect_to pin_path(@pin)
@@ -32,13 +34,30 @@ class PinsController < ApplicationController
 		end
 	end
 
+	def show
+	end
+
 	def destroy
+		@pin.destroy
+		flash[:notice] = "Pin was successfully deleted."
+		redirect_to pins_path
 	end
 
 	private
 
+	def set_pin
+		@pin = Pin.find(params[:id])
+	end
+
 	def pin_params
-		params.require(:pin).permit(:title, :resource_type, :text, :url, :slug)
+		params.require(:pin).permit(:title, :category_id, :text, :url, :slug)
+	end
+
+	def require_same_user
+	  if current_user != @pin.user
+	    flash[:danger] = "You can only edit or delete your own profile"
+	    redirect_to pins_path
+	  end
 	end
 
 end

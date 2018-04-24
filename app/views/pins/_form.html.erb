@@ -1,0 +1,38 @@
+<div class="form">
+	<% if @pin.errors.any? %>
+		<div class="alert alert-danger" role="alert">
+			<h2>The following errors prevented the pin from being created/updated</h2>
+			<ul>
+				<% @pin.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+	<%= form_for(@pin, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+		<div class="form-group">
+			<%= f.label :title %>
+			<%= f.text_field :title, class: "form-control" %>
+		</div>
+		<div class="form-group">
+			<%= f.label :category_id %>
+			<%= f.collection_select(:category_id, Category.all, :id, :name) %>
+		</div>
+		<div class="form-group">
+			<%= f.label :text %>
+			<%= f.text_area :text, class: "form-control" %>
+		</div>	
+		<div class="form-group">
+			<%= f.label :url %>
+			<%= f.text_field :url, class: "form-control" %>
+		</div>	
+		<div class="form-group">
+			<%= f.label :slug %>
+			<%= f.text_field :slug, class: "form-control" %>
+		</div>	
+		<div class="form-group">
+			<%= f.submit 'Submit' %>
+		</div>
+	<% end %>
+</div>

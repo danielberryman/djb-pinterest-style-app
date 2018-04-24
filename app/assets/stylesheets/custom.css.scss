@@ -1,2 +1,57 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.navbar-inverse {
+	margin-bottom: 50px;
+}
+
+h1, h2 {
+	margin: 0;
+	padding: 0;
+}
+
+p {
+	margin: 25px 150px;
+}
+
+.center {
+	text-align: center;
+}
+
+.home-buttons {
+	margin-top: 25px;
+	margin-left: 10px;
+	margin-right: 10px;
+	width: 100px;
+}
+
+.pins {
+	margin: 0 100px;
+}
+
+.pin-container{
+  margin-bottom: 50px;
+  padding: 10px;
+}
+
+.pin {
+  padding: 40px;
+  min-height: 343px;
+  background-color: #fff;
+  border: 1px solid #efefef;
+}
+
+.show-pin{
+  background-color: #fff;
+  padding: 40px;  
+}
+
+ul {
+	list-style: none;
+	padding-left: 0;
+}
+
+.form {
+	width: 60%;
+	margin: 20px 20%;
+}

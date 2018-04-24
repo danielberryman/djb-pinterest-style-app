@@ -11,18 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180424114005) do
+ActiveRecord::Schema.define(version: 20180424192632) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+  end
 
   create_table "pins", force: :cascade do |t|
     t.string   "title"
     t.string   "url"
     t.text     "text"
     t.string   "slug"
-    t.string   "resource_type"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "category_id"
   end
+
+  add_index "pins", ["category_id"], name: "index_pins_on_category_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "username"

@@ -1,20 +1,3 @@
-<%= form_for(@pin) do |f| %>
+<h1 class="center">Edit your pin</h1>
 
-	<%= f.label :title %>
-	<%= f.text_field :title %>
-
-	<%= f.label :resource_type %>
-	<%= f.text_field :resource_type %>
-
-	<%= f.label :text %>
-	<%= f.text_area :text %>
-
-	<%= f.label :url %>
-	<%= f.text_field :url %>
-
-	<%= f.label :slug %>
-	<%= f.text_field :slug %>
-
-	<%= f.submit %>
-
-<% end %>
+<%= render 'form' %>

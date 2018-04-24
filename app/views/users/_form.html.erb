@@ -1,0 +1,33 @@
+<div class="form">
+	<% if @user.errors.any? %>
+		<div class="alert alert-danger" role="alert">
+			<h2>The following errors prevented the user from being created/updated</h2>
+			<ul>
+				<% @user.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+	<%= form_for(@user, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+		<div class="form-group">
+			<%= f.label :username %>
+			<%= f.text_field :username, class: "form-control" %>
+		</div>
+		<div class="form-group">
+			<%= f.label :email %>
+			<%= f.text_field :email, class: "form-control" %>
+		</div>
+		<div class="form-group">
+			<%= f.label :password %>
+			<%= f.password_field :password, class: "form-control" %>
+		</div>	
+		<div class="form-group">
+			<%= f.submit 'Submit' %>
+		</div>
+		<div class="form-group">
+			<%= link_to 'Back to users list', users_path %>
+		</div>
+	<% end %>
+</div>
