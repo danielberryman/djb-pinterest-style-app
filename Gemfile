@@ -8,6 +8,9 @@ gem 'sqlite3'
 # password functionality
 gem 'bcrypt', '~> 3.1.7'
 
+gem 'paperclip', '~> 4.3', '>= 4.3.6'
+gem 'aws-sdk-s3'
+
 # Use SCSS for stylesheets
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'sass-rails', '~> 5.0'

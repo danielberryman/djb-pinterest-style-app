@@ -7,7 +7,8 @@
 		<a href="<%= "#{@pin.url}" %>" target="_blank">
 			<%= "#{@pin.url}" %>
 		</a>
-	</p> 
+	</p>
+	<img src="<%= @pin.avatar.url(:medium) %>">
 	<% if @pin.user == current_user %>
 		<p><%= link_to 'Delete this pin', pin_path(@pin), method: :delete, data: {confirm: "Are you sure you want to delete this pin?"} %></p>
 	<% end %>
