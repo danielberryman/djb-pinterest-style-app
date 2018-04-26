@@ -35,6 +35,7 @@ class UsersController < ApplicationController
 	end
 
 	def show
+		@pins = current_user.pins
 	end
 
 	def destroy

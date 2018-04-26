@@ -1,5 +1,5 @@
 class PinsController < ApplicationController
-	before_action :set_pin, only: [:edit, :update, :show, :destroy]
+	before_action :set_pin, only: [:edit, :update, :show, :destroy, :repin]
 	before_action :require_user, except: [:index, :show]
 	before_action :require_same_user, only: [:edit, :update, :destroy]
 
@@ -41,6 +41,11 @@ class PinsController < ApplicationController
 		@pin.destroy
 		flash[:notice] = "Pin was successfully deleted."
 		redirect_to pins_path
+	end
+
+	def repin
+		@pin.pinnings.create(user: current_user)
+		redirect_to user_path(current_user)
 	end
 
 	private

@@ -39,7 +39,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-group :development, :test do
+group :development do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
@@ -48,5 +48,23 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  #includes RSpec itsle in a wrapper to make it play nicely with Rails 3
+  gem 'rspec-rails'
+  #replaces rails default fixtures for feeding test data to the test suite with much more preferable factories
+end
+
+group :test do
+  gem 'shoulda-matchers'
+  gem 'database_cleaner'  
+  gem 'rspec'
+  #generates names, emails addresses, and other placeholders for factories
+  gem 'faker'
+  #makes it easy to programmatically simulate your user interactions with you app
+  gem 'capybara'
+  #watches your app and tests and runs specs for you automatically when it detects change
+  gem 'guard-rspec'
+  #Opens your default web browser upon failed integration specs to show you what your application is rendering
+  gem 'launchy'
+  gem 'factory_girl_rails'
 end
 

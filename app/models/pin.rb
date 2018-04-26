@@ -1,5 +1,6 @@
 class Pin < ActiveRecord::Base
-	belongs_to :user
+	has_many :users, through: :pinnings
+	has_many :pinnings
 	belongs_to :category
 
 	# for paperclip gem
@@ -8,5 +9,4 @@ class Pin < ActiveRecord::Base
 
 	validates_presence_of :title, :url, :text, :category_id, :user_id
 	validates_uniqueness_of :slug
-
 end

@@ -14,12 +14,19 @@
 						<li><%= pin.title %></li>
 						<li><%= 'Profile pic' %></li>
 						<li><%= pin.url %></li>
+						<li><%= link_to 'View', pin_path(pin) %></li>
+						<li>
+							<% if logged_in? && current_user == pin.user_id %>
+								<%= link_to 'Edit', edit_pin_path(pin) %>
+								<%= link_to 'Delete', pin_path(pin), method: :delete, data: {confirm: "Are you sure you want to delete this pin?"} %>
+							<% end %>
+						</li>
+						<li>
+							<%= link_to repin_path(pin), class: 'btn btn-default', method: 'post' do %>
+								Repin!
+							<% end %>
+						</li>
 					</ul>
-					<%= link_to 'View', pin_path(pin) %>
-					<% if logged_in? && current_user == pin.user %>
-						<%= link_to 'Edit', edit_pin_path(pin) %>
-						<%= link_to 'Delete', pin_path(pin), method: :delete, data: {confirm: "Are you sure you want to delete this pin?"} %>
-					<% end %>
 				</div>
 			</div>
 		<% end %>

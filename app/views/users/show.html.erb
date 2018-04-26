@@ -5,3 +5,38 @@
 	<p><%= link_to "Delete your account & it's associated pins", user_path(@user), method: :delete, data: {confirm: "Are you sure you want to delete your account and all associated pins created by this account?"} %></p>
 	<p><%= link_to 'Back to users list', users_path %></p>
 </div>
+
+<div class="pins">
+	<% @pins.each_slice(3) do |row| %>
+		<% row.each do |pin| %>
+			<div class="pin-container col-xs-4">
+				<div class="logo-thumbnail col-md-4">
+				  <% if "#{pin.category_id}" == "2" %>
+                      <%= image_tag('rails-logo-thumbnail.png') %>
+                  <% elsif "#{pin.category_id}" == "1" %>
+                      <%= image_tag('ruby-logo-thumbnail.png') %>
+                  <% end %>
+				</div>
+				<div class="pin-info col-md-8">
+					<ul>
+						<li><%= pin.title %></li>
+						<li><%= 'Profile pic' %></li>
+						<li><%= pin.url %></li>
+						<li><%= link_to 'View', pin_path(pin) %></li>
+						<li>
+							<% if logged_in? && current_user == pin.user_id %>
+								<%= link_to 'Edit', edit_pin_path(pin) %>
+								<%= link_to 'Delete', pin_path(pin), method: :delete, data: {confirm: "Are you sure you want to delete this pin?"} %>
+							<% end %>
+						</li>
+						<li>
+							<%= link_to repin_path(pin), class: 'btn btn-default', method: 'post' do %>
+								Repin!
+							<% end %>
+						</li>
+					</ul>
+				</div>
+			</div>
+		<% end %>
+	<% end %>
+</div>

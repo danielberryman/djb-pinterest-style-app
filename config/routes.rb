@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
 
+  post 'pins/repin/:id', to: 'pins#repin', as: 'repin'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
