@@ -23,5 +23,16 @@ class ApplicationController < ActionController::Base
   		redirect_to root_path
   	end
   end
+
+  def original_pin_user
+    #find the pin id of the current pin
+    pin_id = @pin.id
+    pinnings = Pinning.find(pin_id)
+    #loop through all the pinnings to match with that pin_id
+    Pinning.find_by_pin_id(12)
+    Pinning.all.select { |m| m.pin_id == 12 }
+    #find the oldesPinning.all.select { |m| m.pin_id == 12 }t of those pinnings that have the same pin_id
+    pinnings = Pinning.all
+  end
   
 end

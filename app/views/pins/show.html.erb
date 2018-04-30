@@ -1,8 +1,11 @@
 <h1 class="center">Title <%= @pin.title %></h1>
 <div class="form">
-	<% if logged_in? %>
-		<p>Created by: <%= @pin.users.pluck(:username) %></p>
-	<% end %>
+	<!-- <p>Created by: <%= @pin.users {} %></p> -->
+	<p>????</p>
+	  <% @pin.pinnings.each do |pp| %>
+	    <%= pp.user.username %>
+	  <% end %>
+	</p>
 	<p>Description: <%= @pin.text %></p>
 	<p>URL: 
 		<a href="<%= "#{@pin.url}" %>" target="_blank">
@@ -10,8 +13,10 @@
 		</a>
 	</p>
 	<img src="<%= @pin.avatar.url(:medium) %>">
-	<%= link_to repin_path(@pin), class: 'btn btn-default', method: 'post' do %>
-		Repin!
+	<% if logged_in? %>
+		<%= link_to repin_path(@pin), class: 'btn btn-default', method: 'post' do %>
+			Repin!
+		<% end %>
 	<% end %>
 	<% if @pin.users == current_user %>
 		<p><%= link_to 'Delete this pin', pin_path(@pin), method: :delete, data: {confirm: "Are you sure you want to delete this pin?"} %></p>
