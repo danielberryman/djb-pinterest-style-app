@@ -36,29 +36,6 @@ RSpec.describe PinsController do
       get :new
       expect(assigns(:pin)).to be_a_new(Pin)
     end
-  end 
-
-  describe "GET edit" do
-    before(:each) do
-      @pin = { 
-            title: 'Rails Tutorial', 
-          url: 'https://www.railstutorial.org/', 
-          text: "The trusted standard in self-directed introductions to Ruby on Rails. A complete treatment of all the essentials required in most production Rails applications.", 
-          slug: "rails-tutorial",
-          category_id: "rails",
-        id: '2'}    
-    end
-
-    # responds successfully
-    it 'responds with successfully' do
-      get :edit, pin: @pin_id
-      expect(response.success?).to be(true)
-    end
-    # renders the edit template
-    
-    #assigns an instance variable called @pin to the Pin with the appropriate id
-    
   end
-
 
 end
