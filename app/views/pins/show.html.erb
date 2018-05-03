@@ -1,11 +1,6 @@
 <h1 class="center">Title <%= @pin.title %></h1>
 <div class="form">
-	<!-- <p>Created by: <%= @pin.users {} %></p> -->
-	<p>????</p>
-	  <% @pin.pinnings.each do |pp| %>
-	    <%= pp.user.username %>
-	  <% end %>
-	</p>
+	<p>Created by: <%= @pin.user.username %></p>
 	<p>Description: <%= @pin.text %></p>
 	<p>URL: 
 		<a href="<%= "#{@pin.url}" %>" target="_blank">
@@ -18,8 +13,8 @@
 			Repin!
 		<% end %>
 	<% end %>
-	<% if @pin.users == current_user %>
-		<p><%= link_to 'Delete this pin', pin_path(@pin), method: :delete, data: {confirm: "Are you sure you want to delete this pin?"} %></p>
+	<% if @pin.user == current_user %>
+		<p><%= link_to "Delete this pin", pin_path(@pin), method: :delete, data: {confirm: "Are you sure you want to delete this pin?"} %></p>
 	<% end %>
 	<p><%= link_to 'Back to pins list', pins_path %></p>
 </div>

@@ -9,11 +9,12 @@ class PinsController < ApplicationController
 
 	def new
 		@pin = Pin.new
+		@pin.user = current_user
 	end
 
 	def create
 		@pin = Pin.new(pin_params)
-		@pin.users << current_user
+		@pin.user = current_user
 		if @pin.save
 			flash[:success] = "You created a new pin!"
 			redirect_to pin_path(@pin)
