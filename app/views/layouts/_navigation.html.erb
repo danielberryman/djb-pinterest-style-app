@@ -22,7 +22,10 @@
               <li role="presentation" class="divider"></li>
               <li role="presentation">
                 <%= link_to "Add a Board", new_board_path, "role" => "menuitem", "tabindex" => "-1" %>
-              </li>      
+              </li>    
+              <li role="presentation">
+                <%= link_to "My boards", my_boards_path, "role" => "menuitem", "tabindex" => "-1" %>
+              </li>   
             </ul>
           </li>
         <% end %>

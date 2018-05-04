@@ -18,11 +18,32 @@ p {
 	text-align: center;
 }
 
+.header {
+	margin-top: 100px;
+	margin-bottom: 100px;
+}
+
+.header h1 {
+	margin: 0 50px;
+}
+
+.header p {
+	margin: 15px 50px;
+}
+
+.header img {
+	margin: 35px 0;
+}
+
+.header a:visited, a:hover {
+	background-color: white;
+	color: black;
+}
+
 .home-buttons {
 	margin-top: 25px;
 	margin-left: 10px;
 	margin-right: 10px;
-	width: 100px;
 }
 
 .pins {
@@ -30,8 +51,32 @@ p {
 }
 
 .pin-container{
-  margin-bottom: 50px;
-  padding: 10px;
+  margin-bottom: 25px;
+  padding: 5px;
+  width: 100%;
+}
+
+.row.display-flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+.row.display-flex > [class*='col-'] {
+  display: flex;
+  flex-direction: column;
+}
+
+.row-style {
+  color: black;
+  margin-bottom: 50px;	
+}
+
+.row-style a:visited {
+  color: black;
+}
+
+.row-style a:hover {
+  background-color: white;
+  color: black;
 }
 
 .pin {
@@ -55,3 +100,13 @@ ul {
 	width: 60%;
 	margin: 20px 20%;
 }
+
+.no-border {
+	border: 0px !important;
+}
+
+.link a:visited, a:hover {
+	background-color: white;
+	color: black;
+}
+

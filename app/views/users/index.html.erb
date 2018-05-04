@@ -1,22 +1,28 @@
-<div class="pins">
-	<% @users.each_slice(3) do |row| %>
-		<% row.each do |user| %>
-			<div class="pin-container col-xs-4">
-				<div class="pin-image col-md-4">
-					<%= image_tag('ruby-logo-thumbnail.png') %>
-				</div>
-				<div class="pin-info col-md-8">
-					<ul>
-						<li><%= user.username %></li>
-						<li><%= user.email %></li>
-					</ul>
-					<% if logged_in? && current_user == user %>
-						<%= link_to 'View', user_path(user) %>
-						<%= link_to 'Edit', edit_user_path(user) %>
-						<%= link_to 'Delete', user_path(user), method: :delete, data: {confirm: "Are you sure you want to delete your account and all associated pins created by this account?"} %>
-					<% end %>
+<div class="center header">
+	<h1><strong>Users</strong></h1>
+</div>
+
+<div class="container">
+	<div class="row display-flex">
+		<% @users.each do |user| %>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+				<div class="row row-style">
+					<div class="pin-image col-xs-offset-2 col-xs-3 col-sm-offset-1 col-sm-3">
+						<%= image_tag('ruby-logo-thumbnail.png') %>
+					</div>
+					<div class="pin-info col-xs-7 col-sm-8">
+						<ul>
+							<li><%= user.username %></li>
+							<li><%= user.email %></li>
+						</ul>
+						<% if logged_in? && current_user == user %>
+							<%= link_to 'View', user_path(user) %>
+							<%= link_to 'Edit', edit_user_path(user) %>
+							<%= link_to 'Delete', user_path(user), method: :delete, data: {confirm: "Are you sure you want to delete your account and all associated pins created by this account?"} %>
+						<% end %>
+					</div>
 				</div>
 			</div>
 		<% end %>
-	<% end %>
+	</div>
 </div>

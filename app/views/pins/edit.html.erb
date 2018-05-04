@@ -1,3 +1,7 @@
-<h1 class="center">Edit your pin</h1>
+<div class="center header">
+	<h1><strong>Edit your pin</strong></h1>
+	<h3>Title: <%= @pin.title %></h3>
+	<p><%= link_to 'Back to pins list', pins_path %></p>
+</div>
 
 <%= render 'form' %>

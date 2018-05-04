@@ -1,6 +1,8 @@
-<h1>Editing Board</h1>
+<div class="center header">
+	<h1><strong>Edit your board</strong></h1>
+	<p><%= link_to 'Back to board', @board %> | <%= link_to 'Back to all boards', boards_path %></p>
+</div>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @board %> |
-<%= link_to 'Back', boards_path %>
+

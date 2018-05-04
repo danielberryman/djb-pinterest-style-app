@@ -14,6 +14,10 @@ class BoardsController < ApplicationController
     @pinnings = @board.pinnings
   end
 
+  def my_boards
+    @boards = current_user.boards
+  end
+
   # GET /boards/new
   def new
     @board = Board.new
