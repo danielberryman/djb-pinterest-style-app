@@ -35,8 +35,16 @@
 			<%= f.label :avatar %>
 			<%= f.file_field :avatar %>
 		</div>
+		<%= f.fields_for :pinnings, @pin.pinnings do |p| %>
+		  <div class="form-group">
+		    <label>Which board?</label>
+		    <%= p.collection_select(:board_id, current_user.boards, :id, :name, {}, {class: "form-control"}) %>
+		    <%= p.hidden_field :user_id, value: current_user.id %>  
+		  </div>  
+		<% end %>  
 		<div class="form-group">
 			<%= f.submit 'Submit' %>
 		</div>
 	<% end %>
+
 </div>

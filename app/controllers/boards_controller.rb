@@ -1,5 +1,6 @@
 class BoardsController < ApplicationController
   before_action :set_board, only: [:show, :edit, :update, :destroy]
+  before_action :require_user, except: [:index]
 
   # GET /boards
   # GET /boards.json
@@ -10,6 +11,7 @@ class BoardsController < ApplicationController
   # GET /boards/1
   # GET /boards/1.json
   def show
+    @pinnings = @board.pinnings
   end
 
   # GET /boards/new

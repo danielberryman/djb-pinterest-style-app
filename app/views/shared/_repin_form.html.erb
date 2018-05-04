@@ -1,0 +1,29 @@
+<% if logged_in? %>	
+	<div class="form">
+		<% if @pin.errors.any? %>
+			<div class="alert alert-danger" role="alert">
+				<h2>The following errors prevented the pin from being created/updated</h2>
+				<ul>
+					<% @pin.errors.full_messages.each do |msg| %>
+						<li><%= msg %></li>
+					<% end %>
+				</ul>
+			</div>
+		<% end %>
+
+		<%= form_for @pin, url: repin_path(@pin), method: "post" do |f| %>
+			<%= f.fields_for :pinning do |p| %>
+			  <div class="form-group">
+			    <label>Repin to one of your boards?</label>
+			    <%= p.collection_select(:board_id, current_user.boards, :id, :name, {}, {class: "form-control"}) %>
+			    <%= p.hidden_field :user_id, value: current_user.id %>  
+			  </div>  
+			<% end %>  
+			<div class="form-group">
+				<%= f.submit 'Repin!' %>
+			</div>
+		<% end %>
+	</div>
+<% else %>
+	<%= link_to "Log in to repin!", login_path %>
+<% end %>

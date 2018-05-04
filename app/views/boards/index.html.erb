@@ -1,29 +1,38 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Boards</h1>
+<h1 class="center">Listing Boards</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @boards.each do |board| %>
+<div class="col-md-8 col-md-offset-2">
+  <table class="table">
+   
+    <thead>
       <tr>
-        <td><%= board.name %></td>
-        <td><%= board.user %></td>
-        <td><%= link_to 'Show', board %></td>
-        <td><%= link_to 'Edit', edit_board_path(board) %></td>
-        <td><%= link_to 'Destroy', board, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Name</th>
+        <th>User</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+   
+    <tbody>
+      <% @boards.each do |board| %>
+        <tr>
+          <td><%= board.name %></td>
+          <td><%= board.user.username %></td>
+          <% if logged_in? && current_user == @user %>
+            <td><%= link_to 'Show', board %></td>
+            <td><%= link_to 'Edit', edit_board_path(board) %></td>
+            <td><%= link_to 'Destroy', board, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= link_to 'New Board', new_board_path %>
+
+</div>
 
 <br>
 
-<%= link_to 'New Board', new_board_path %>
+
+

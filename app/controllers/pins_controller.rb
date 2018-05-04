@@ -10,6 +10,7 @@ class PinsController < ApplicationController
 	def new
 		@pin = Pin.new
 		@pin.user = current_user
+		@pin.pinnings.build
 	end
 
 	def create
@@ -19,6 +20,7 @@ class PinsController < ApplicationController
 			flash[:success] = "You created a new pin!"
 			redirect_to pin_path(@pin)
 		else
+			@pin.pinnings.build
 			render 'new'
 		end
 	end
@@ -56,7 +58,7 @@ class PinsController < ApplicationController
 	end
 
 	def pin_params
-		params.require(:pin).permit(:title, :category_id, :text, :url, :slug)
+		params.require(:pin).permit(:title, :category_id, :text, :url, :slug, pinnings_attributes: [ :board_id ])
 	end
 
 	def require_same_user
