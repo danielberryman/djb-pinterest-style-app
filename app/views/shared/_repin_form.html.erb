@@ -19,9 +19,10 @@
 			    <%= p.hidden_field :user_id, value: current_user.id %>  
 			  </div>  
 			<% end %>  
-			<div class="form-group">
-				<%= f.submit 'Repin!' %>
-			</div>
+			<%= f.button :submit, class: "btn btn-default pinterest-theme-button" do %>
+				<i class="fa fa-diamond"></i>
+				Repin!
+			<% end %>
 		<% end %>
 	</div>
 <% else %>
