@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe "Boards", type: :request do
-  describe "GET /boards" do
+RSpec.describe "Followers", type: :request do
+  describe "GET /followers" do
     it "works! (now write some real specs)" do
-      get boards_path
+      get followers_path
       expect(response).to have_http_status(200)
     end
   end

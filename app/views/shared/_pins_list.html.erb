@@ -1,8 +1,8 @@
 <div class="container">
 	<div class="row display-flex">
 		<% @pins.each do |pin| %>
-			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-				<div class="row row-style">
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" style="padding: 0;">
+				<div class="row row-style" style="margin: 15px; background-color: #e2e5e9; padding: 15px 0 15px 0; border-radius: 25px;">
 					<div class="logo-thumbnail col-xs-offset-2 col-xs-3 col-sm-offset-1 col-sm-3">
 						<% if "#{pin.category_id}" == "2" %>
 						    <%= image_tag('rails-logo-thumbnail.png') %>

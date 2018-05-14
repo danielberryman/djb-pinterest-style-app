@@ -1,0 +1,31 @@
+<div class="center header">
+  <h1><strong>Find People to Follow!</strong></h1>
+</div>
+
+<div class="col-md-8 col-md-offset-2">
+	<table class="table">
+	  <thead>
+		<tr>
+			<th></th>
+			<th>User</th>
+			<th>Boards</th>
+		</tr>
+	  </thead>
+	  <tbody>
+	  	<% @users.each do |user_to_follow| %>
+	  	<tr>
+	  		<td><%= render partial: 'form', locals: { user_to_follow: user_to_follow} %></td>
+	  		<td><%= "User: #{user_to_follow.username}" %></td>
+	  		<% user_to_follow.boards.each do |board| %>
+	  			<td class="link"><%= link_to board.name, board_path(board) %></td>
+	  		<% end %>
+	  	</tr>
+	  	<% end %>
+	  </tbody>
+	</table>
+
+<div class="link">
+  <%= link_to 'Back', my_followers_path %>
+</div>
+
+</div>

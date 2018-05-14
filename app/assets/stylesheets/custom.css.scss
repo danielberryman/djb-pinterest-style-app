@@ -105,8 +105,15 @@ ul {
 	border: 0px !important;
 }
 
-.link a:visited, a:hover {
-	background-color: white;
+.pin-info a {
+	color: black;
+}
+
+a:visited {
+	color: white;
+}
+
+.link a:visited, a {
 	color: black;
 }
 

@@ -9,7 +9,7 @@ gem 'sqlite3'
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'paperclip', '~> 4.3', '>= 4.3.6'
-gem 'aws-sdk-s3'
+#gem 'aws-sdk-s3'
 
 # Use SCSS for stylesheets
 gem 'bootstrap-sass', '~> 3.3.7'
@@ -39,6 +39,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+group :development, :test do
+  gem 'rspec-rails', '~>3.6'
+  gem 'spring-commands-rspec'
+end
+
 group :development do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -49,22 +54,22 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   #includes RSpec itsle in a wrapper to make it play nicely with Rails 3
-  gem 'rspec-rails'
+
   #replaces rails default fixtures for feeding test data to the test suite with much more preferable factories
 end
 
 group :test do
   gem 'shoulda-matchers'
   gem 'database_cleaner'  
-  gem 'rspec'
+  #gem 'rspec'
   #generates names, emails addresses, and other placeholders for factories
   gem 'faker'
   #makes it easy to programmatically simulate your user interactions with you app
   gem 'capybara'
   #watches your app and tests and runs specs for you automatically when it detects change
-  gem 'guard-rspec'
+  #gem 'guard-rspec'
   #Opens your default web browser upon failed integration specs to show you what your application is rendering
   gem 'launchy'
-  gem 'factory_girl_rails'
+  #gem 'factory_girl_rails'
 end
 

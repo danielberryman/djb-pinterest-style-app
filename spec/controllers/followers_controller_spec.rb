@@ -23,10 +23,10 @@ require 'rails_helper'
 # removed from Rails core in Rails 5, but can be added back in via the
 # `rails-controller-testing` gem.
 
-RSpec.describe BoardsController, type: :controller do
+RSpec.describe FollowersController, type: :controller do
 
   # This should return the minimal set of attributes required to create a valid
-  # Board. As you add validations to Board, be sure to
+  # Follower. As you add validations to Follower, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
     skip("Add a hash of attributes valid for your model")
@@ -38,12 +38,12 @@ RSpec.describe BoardsController, type: :controller do
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
-  # BoardsController. Be sure to keep this updated too.
+  # FollowersController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
   describe "GET #index" do
     it "returns a success response" do
-      board = Board.create! valid_attributes
+      follower = Follower.create! valid_attributes
       get :index, {}, valid_session
       expect(response).to be_success
     end
@@ -51,8 +51,8 @@ RSpec.describe BoardsController, type: :controller do
 
   describe "GET #show" do
     it "returns a success response" do
-      board = Board.create! valid_attributes
-      get :show, {:id => board.to_param}, valid_session
+      follower = Follower.create! valid_attributes
+      get :show, {:id => follower.to_param}, valid_session
       expect(response).to be_success
     end
   end
@@ -66,29 +66,29 @@ RSpec.describe BoardsController, type: :controller do
 
   describe "GET #edit" do
     it "returns a success response" do
-      board = Board.create! valid_attributes
-      get :edit, {:id => board.to_param}, valid_session
+      follower = Follower.create! valid_attributes
+      get :edit, {:id => follower.to_param}, valid_session
       expect(response).to be_success
     end
   end
 
   describe "POST #create" do
     context "with valid params" do
-      it "creates a new Board" do
+      it "creates a new Follower" do
         expect {
-          post :create, {:board => valid_attributes}, valid_session
-        }.to change(Board, :count).by(1)
+          post :create, {:follower => valid_attributes}, valid_session
+        }.to change(Follower, :count).by(1)
       end
 
-      it "redirects to the created board" do
-        post :create, {:board => valid_attributes}, valid_session
-        expect(response).to redirect_to(Board.last)
+      it "redirects to the created follower" do
+        post :create, {:follower => valid_attributes}, valid_session
+        expect(response).to redirect_to(Follower.last)
       end
     end
 
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'new' template)" do
-        post :create, {:board => invalid_attributes}, valid_session
+        post :create, {:follower => invalid_attributes}, valid_session
         expect(response).to be_success
       end
     end
@@ -100,41 +100,41 @@ RSpec.describe BoardsController, type: :controller do
         skip("Add a hash of attributes valid for your model")
       }
 
-      it "updates the requested board" do
-        board = Board.create! valid_attributes
-        put :update, {:id => board.to_param, :board => new_attributes}, valid_session
-        board.reload
+      it "updates the requested follower" do
+        follower = Follower.create! valid_attributes
+        put :update, {:id => follower.to_param, :follower => new_attributes}, valid_session
+        follower.reload
         skip("Add assertions for updated state")
       end
 
-      it "redirects to the board" do
-        board = Board.create! valid_attributes
-        put :update, {:id => board.to_param, :board => valid_attributes}, valid_session
-        expect(response).to redirect_to(board)
+      it "redirects to the follower" do
+        follower = Follower.create! valid_attributes
+        put :update, {:id => follower.to_param, :follower => valid_attributes}, valid_session
+        expect(response).to redirect_to(follower)
       end
     end
 
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'edit' template)" do
-        board = Board.create! valid_attributes
-        put :update, {:id => board.to_param, :board => invalid_attributes}, valid_session
+        follower = Follower.create! valid_attributes
+        put :update, {:id => follower.to_param, :follower => invalid_attributes}, valid_session
         expect(response).to be_success
       end
     end
   end
 
   describe "DELETE #destroy" do
-    it "destroys the requested board" do
-      board = Board.create! valid_attributes
+    it "destroys the requested follower" do
+      follower = Follower.create! valid_attributes
       expect {
-        delete :destroy, {:id => board.to_param}, valid_session
-      }.to change(Board, :count).by(-1)
+        delete :destroy, {:id => follower.to_param}, valid_session
+      }.to change(Follower, :count).by(-1)
     end
 
-    it "redirects to the boards list" do
-      board = Board.create! valid_attributes
-      delete :destroy, {:id => board.to_param}, valid_session
-      expect(response).to redirect_to(boards_url)
+    it "redirects to the followers list" do
+      follower = Follower.create! valid_attributes
+      delete :destroy, {:id => follower.to_param}, valid_session
+      expect(response).to redirect_to(followers_url)
     end
   end
 

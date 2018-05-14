@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :followers
+
+  get 'my_followers', to: 'followers#my_followers'
+
   resources :boards
 
   get 'my_boards', to: 'boards#my_boards'

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<div class="center header">
+  <h1><strong>Follower Relationships</strong></h1>
+  <p><%= link_to 'My followers', my_followers_path(current_user) %></p>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Follower</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @followers.each do |follower| %>
+      <tr>
+        <td><%= follower.user.username %></td>
+        <td class="link"><%= link_to 'Show', follower %></td>
+        <td class="link"><%= link_to 'Edit', edit_follower_path(follower) %></td>
+        <td class="link"><%= link_to 'Destroy', follower, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<div class="link">
+  <%= link_to 'New Follower', new_follower_path%>
+</div>
+
