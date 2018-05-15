@@ -25,9 +25,7 @@
             <ul class="dropdown-menu">
               <% current_user.boards.each do |board| %>
                 <li role="presentation">
-                  <a role="menuitem" tabindex="-1" href="PUT LINK TO BOARD HERE">
-                    <%= board.name %>
-                  </a>
+                  <%= link_to board.name, board_path(board) %>
                 </li>
               <% end %>
               <li role="presentation" class="divider"></li>

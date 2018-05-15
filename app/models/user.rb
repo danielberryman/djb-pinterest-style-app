@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
 	has_many :pinnings
 	has_many :pins, through: :pinnings, dependent: :destroy
-	has_many :boards
-	has_many :followers
+	has_many :boards, dependent: :destroy
+	has_many :followers, dependent: :destroy
 	before_save {self.email = email.downcase}
 
 	validates_presence_of :username, :email, :password_digest

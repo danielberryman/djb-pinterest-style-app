@@ -9,37 +9,33 @@
 	</div>
 </div>
 
-<div class="pins">
+<div class="container">
+	<div class="row display-flex">
 	<% @pinnings.each_slice(3) do |row| %>
 		<% row.each do |pinning| %>
-			<div class="pin-container col-xs-4">
-				<div class="logo-thumbnail col-md-4">
-				  <% if "#{pinning.pin.category_id}" == "2" %>
-                      <%= image_tag('rails-logo-thumbnail.png') %>
-                  <% elsif "#{pinning.pin.category_id}" == "1" %>
-                      <%= image_tag('ruby-logo-thumbnail.png') %>
-                  <% end %>
-				</div>
-				<div class="pin-info col-md-8">
-					<ul>
-						<li><%= pinning.pin.title %></li>
-						<li><%= 'Profile pic' %></li>
-						<li><%= pinning.pin.url %></li>
-						<li><%= link_to 'View', pin_path(pinning) %></li>
-						<% if logged_in? && current_user == pinning.user_id %>
-							<li>
-								<%= link_to 'Edit', edit_pin_path(pin) %>
-								<%= link_to 'Delete', pin_path(pin), method: :delete, data: {confirm: "Are you sure you want to delete this pin?"} %>
-							</li>
-							<li>
-								<%= link_to repin_path(pin), class: 'btn btn-default', method: 'post' do %>
-									Repin!
-								<% end %>
-							</li>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" style="padding: 0;">
+				<div class="row row-style" style="margin: 15px; background-color: #e2e5e9; padding: 15px 0 15px 0; border-radius: 25px;">
+					<div class="logo-thumbnail col-xs-offset-2 col-xs-3 col-sm-offset-1 col-sm-3">
+						<% if "#{pinning.pin.category_id}" == "2" %>
+						    <%= image_tag('rails-logo-thumbnail.png') %>
+						<% elsif "#{pinning.pin.category_id}" == "1" %>
+						    <%= image_tag('ruby-logo-thumbnail.png') %>
 						<% end %>
-					</ul>
+					</div>
+					<div class="pin-info col-xs-7 col-sm-8">
+						<ul>
+							<li><%= pinning.pin.title %></li>
+							<li><%= 'Profile pic' %></li>
+							<li><%= pinning.pin.url %></li>
+							<li><%= link_to 'View', pin_path(pinning) %> 
+							<% if logged_in? && current_user == pinning.user %>
+								<%= link_to 'Edit', edit_pin_path(pinning) %> <%= link_to 'Delete', pin_path(pinning), method: :delete, data: {confirm: "Are you sure you want to delete this pin?"} %></li>
+							<% end %>
+						</ul>
+					</div>
 				</div>
 			</div>
 		<% end %>
 	<% end %>
+	</div>
 </div>
