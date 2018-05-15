@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20180511112515) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "boards", force: :cascade do |t|
     t.string   "name"
     t.integer  "user_id"
@@ -20,7 +23,7 @@ ActiveRecord::Schema.define(version: 20180511112515) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "boards", ["user_id"], name: "index_boards_on_user_id"
+  add_index "boards", ["user_id"], name: "index_boards_on_user_id", using: :btree
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -33,8 +36,8 @@ ActiveRecord::Schema.define(version: 20180511112515) do
     t.datetime "updated_at",  null: false
   end
 
-  add_index "followers", ["follower_id"], name: "index_followers_on_follower_id"
-  add_index "followers", ["user_id"], name: "index_followers_on_user_id"
+  add_index "followers", ["follower_id"], name: "index_followers_on_follower_id", using: :btree
+  add_index "followers", ["user_id"], name: "index_followers_on_user_id", using: :btree
 
   create_table "pinnings", force: :cascade do |t|
     t.integer  "user_id"
@@ -44,9 +47,9 @@ ActiveRecord::Schema.define(version: 20180511112515) do
     t.integer  "board_id"
   end
 
-  add_index "pinnings", ["board_id"], name: "index_pinnings_on_board_id"
-  add_index "pinnings", ["pin_id"], name: "index_pinnings_on_pin_id"
-  add_index "pinnings", ["user_id"], name: "index_pinnings_on_user_id"
+  add_index "pinnings", ["board_id"], name: "index_pinnings_on_board_id", using: :btree
+  add_index "pinnings", ["pin_id"], name: "index_pinnings_on_pin_id", using: :btree
+  add_index "pinnings", ["user_id"], name: "index_pinnings_on_user_id", using: :btree
 
   create_table "pins", force: :cascade do |t|
     t.string   "title"
@@ -63,7 +66,7 @@ ActiveRecord::Schema.define(version: 20180511112515) do
     t.datetime "avatar_updated_at"
   end
 
-  add_index "pins", ["category_id"], name: "index_pins_on_category_id"
+  add_index "pins", ["category_id"], name: "index_pins_on_category_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
@@ -73,4 +76,9 @@ ActiveRecord::Schema.define(version: 20180511112515) do
     t.datetime "updated_at"
   end
 
+  add_foreign_key "boards", "users"
+  add_foreign_key "followers", "users"
+  add_foreign_key "followers", "users", column: "follower_id"
+  add_foreign_key "pinnings", "pins"
+  add_foreign_key "pinnings", "users"
 end
